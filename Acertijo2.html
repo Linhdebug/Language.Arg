@@ -6,25 +6,35 @@
     <style>
         body {
             background-color: black;
-            color: black; /* mismo que el fondo */
+            color: black; /* color del texto secreto */
             font-family: "Times New Roman", serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             text-align: center;
-            font-size: 48px;
             user-select: text; /* permite seleccionar el texto */
         }
-        /* opcional: efecto al seleccionarlo */
+        h1 {
+            color: white; /* texto visible en blanco */
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        p {
+            font-size: 48px;
+            margin: 0;
+        }
+        /* efecto al seleccionar */
         ::selection {
-            background: yellow; /* color al seleccionar */
-            color: black; /* texto visible al seleccionar */
+            background: yellow; /* color de fondo al seleccionar */
+            color: black; /* el texto negro se hace visible */
         }
     </style>
 </head>
 <body>
-    METRICA
+    <h1>Aquí no hay nada:</h1>
+    <p>METRICA</p>
 </body>
 </html>
