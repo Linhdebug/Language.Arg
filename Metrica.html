@@ -43,15 +43,15 @@
 
     <script>
         document.addEventListener("keydown", function(event) {
-            // Detecta si se presiona la flecha derecha
+            // Si se presiona la flecha derecha
             if (event.key === "ArrowRight") {
                 const flecha = document.getElementById("flecha");
                 const texto = document.getElementById("texto");
 
-                // Oculta la flecha
+                // Oculta la flecha suavemente
                 flecha.style.opacity = 0;
 
-                // Espera un poco antes de mostrar el texto
+                // Luego muestra el texto
                 setTimeout(() => {
                     flecha.style.display = "none";
                     texto.style.display = "block";
