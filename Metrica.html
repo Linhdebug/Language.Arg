@@ -2,23 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Métrica</title>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: "Times New Roman", serif;
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            font-family: "Times New Roman", serif;
             text-align: center;
         }
 
         h1 {
-            font-size: 60px;
+            font-size: 64px;
             margin-bottom: 40px;
         }
 
@@ -28,9 +30,9 @@
         }
 
         #texto {
-            display: none;
             font-size: 28px;
             margin-top: 20px;
+            display: none;
             opacity: 0;
             transition: opacity 1s ease;
         }
@@ -42,20 +44,17 @@
     <div id="texto">La métrica del Cid es...</div>
 
     <script>
-        document.addEventListener("keydown", function(event) {
-            // Si se presiona la flecha derecha
+        document.addEventListener("keydown", (event) => {
             if (event.key === "ArrowRight") {
                 const flecha = document.getElementById("flecha");
                 const texto = document.getElementById("texto");
 
-                // Oculta la flecha suavemente
-                flecha.style.opacity = 0;
+                flecha.style.opacity = "0";
 
-                // Luego muestra el texto
                 setTimeout(() => {
                     flecha.style.display = "none";
                     texto.style.display = "block";
-                    setTimeout(() => texto.style.opacity = 1, 50);
+                    setTimeout(() => texto.style.opacity = "1", 50);
                 }, 500);
             }
         });
