@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Métrica</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Times New Roman", serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
 
+        h1 {
+            font-size: 60px;
+            margin-bottom: 40px;
+        }
+
+        #flecha {
+            font-size: 48px;
+            transition: opacity 0.5s ease;
+        }
+
+        #texto {
+            display: none;
+            font-size: 28px;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>METRICA:</h1>
+    <div id="flecha">←</div>
+    <div id="texto">La métrica del Cid es...</div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            // Detecta si se presiona la flecha derecha
+            if (event.key === "ArrowRight") {
+                const flecha = document.getElementById("flecha");
+                const texto = document.getElementById("texto");
+
+                // Oculta la flecha
+                flecha.style.opacity = 0;
+
+                // Espera un poco antes de mostrar el texto
+                setTimeout(() => {
+                    flecha.style.display = "none";
+                    texto.style.display = "block";
+                    setTimeout(() => texto.style.opacity = 1, 50);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
