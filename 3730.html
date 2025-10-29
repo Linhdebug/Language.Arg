@@ -2,23 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>3730</title>
+    <title>Quiz de Textos</title>
     <style>
         body {
-            background-color: white;
-            color: black; /* color del texto secreto */
-            font-family: "Times New Roman", serif;
+            background: white;
+            color: black;
+            font-family: "Arial", sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
             text-align: center;
-            user-select: text; /* permite seleccionar el texto */
+            padding: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 15px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Texto 1: Cantar del...</h2>
+    <input type="text" id="respuesta1" placeholder="Destierro">
+    
+    <h2>Texto 2: Cantar de las...</h2>
+    <input type="text" id="respuesta2" placeholder="Bodas">
 
+    <h2>Texto 3: Cantar de la afrenta de...</h2>
+    <input type="text" id="respuesta3" placeholder="Corpes">
+
+    <button onclick="verificar()">Enviar</button>
+    <div id="resultado"></div>
+
+    <script>
+        function verificar() {
+            const respuestasCorrectas = ["Destierro", "Bodas", "Corpes"];
+            const paginas = ["pagina_paris.html", "pagina_pacifico.html", "pagina_everest.html"]; // URLs ficticias
+            const respuestasUsuario = [
+                document.getElementById('respuesta1').value.trim().toUpperCase(),
+                document.getElementById('respuesta2').value.trim().toUpperCase(),
+                document.getElementById('respuesta3').value.trim().toUpperCase()
+            ];
+            const resultado = document.getElementById('resultado');
+            let mensaje = "";
+
+            for (let i = 0; i < respuestasCorrectas.length; i++) {
+                if (respuestasUsuario[i] === respuestasCorrectas[i]) {
+                    // Redirigir a la página correspondiente
+                    window.location.href = paginas[i];
+                    return; // Salir de la función después de redirigir
+                } else {
+                    mensaje += `Respuesta ${i + 1}: Incorrecta. La respuesta correcta es ${respuestasCorrectas[i]}.<br>`;
+                }
+            }
+
+            resultado.innerHTML = mensaje;
         }
-        p {
-            font-size: 48px;
-            margin: 0;
-        }
+    </script>
+</body>
+</html>
