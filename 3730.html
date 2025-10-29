@@ -41,13 +41,13 @@
 </head>
 <body>
     <h2>Texto 1: Cantar del...</h2>
-    <input type="text" id="respuesta1" placeholder="Destierro">
+    <input type="text" id="respuesta1" placeholder="Introduce">
     
     <h2>Texto 2: Cantar de las...</h2>
-    <input type="text" id="respuesta2" placeholder="Bodas">
+    <input type="text" id="respuesta2" placeholder="Introduce">
 
     <h2>Texto 3: Cantar de la afrenta de...</h2>
-    <input type="text" id="respuesta3" placeholder="Corpes">
+    <input type="text" id="respuesta3" placeholder="Introduce">
 
     <button onclick="verificar()">Enviar</button>
     <div id="resultado"></div>
@@ -57,9 +57,9 @@
             const respuestasCorrectas = ["Destierro", "Bodas", "Corpes"];
             const paginas = ["pagina_paris.html", "pagina_pacifico.html", "pagina_everest.html"]; // URLs ficticias
             const respuestasUsuario = [
-                document.getElementById('respuesta1').value.trim().toUpperCase(),
-                document.getElementById('respuesta2').value.trim().toUpperCase(),
-                document.getElementById('respuesta3').value.trim().toUpperCase()
+                document.getElementById('Destierro').value.trim().toUpperCase(),
+                document.getElementById('Bodas').value.trim().toUpperCase(),
+                document.getElementById('Corpes').value.trim().toUpperCase()
             ];
             const resultado = document.getElementById('resultado');
             let mensaje = "";
@@ -70,7 +70,7 @@
                     window.location.href = paginas[i];
                     return; // Salir de la función después de redirigir
                 } else {
-                    mensaje += `Respuesta ${i + 1}: Incorrecta. La respuesta correcta es ${respuestasCorrectas[i]}.<br>`;
+                    mensaje += `Respuesta ${i + 1}: Incorrecta.<br>`;
                 }
             }
 
