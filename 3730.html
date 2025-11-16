@@ -78,7 +78,7 @@ function verificar(bloque) {
     const input = document.getElementById("respuesta" + bloque).value.trim().toUpperCase();
     const error = document.getElementById("error" + bloque);
 
-    if (input === respuestasCorrectas[bloque].palabra) {
+    if (input === respuestasCorrectas[bloque].palabra.toUpperCase()) {
         window.location.href = respuestasCorrectas[bloque].pagina;
     } else {
         error.innerHTML = "No recuerdo aquello.";
