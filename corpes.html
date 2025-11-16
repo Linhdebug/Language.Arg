@@ -35,14 +35,48 @@
 /* ============================================================
    CONFIGURACIÓN DE PROGRESO — CAMBIAR ESTO SEGÚN LA PÁGINA
    ============================================================ */
-const paginaActual = 1;  
-// Página 1 → poner 1
-// Página 2 → poner 2
-// Página 3 → poner 3
+const paginaActual = 1;  // Página 1 → poner 1, 2 → 2, 3 → 3
 
 // Guardar que esta página ha sido vista
 localStorage.setItem("visto" + paginaActual, "true");
 
+/* ============================================================
+   SISTEMA DE CINEMÁTICA
+   ============================================================ */
+const textos = [
+    "Oh, ya recuerdo...",
+    "Meros envidiosos a mis espaldas hablaron",
+    "Por ella razon, Alfonso me desterró",
+    "Por resultado, mi ejercito territorios conquistaron",
+    "Por mis ordenes hacia el rey honraron...",
+    "Oh, ya recuerdo..."
+];
+
+let indice = 0;
+const contenedor = document.getElementById("texto");
+
+function mostrarTexto() {
+    if (indice >= textos.length) {
+        // ---- CINEMÁTICA TERMINADA ----
+        comprobarProgreso();  // Ejecuta la comprobación de páginas vistas
+        return;
+    }
+
+    contenedor.innerHTML = textos[indice];
+    contenedor.style.opacity = 1;
+
+    setTimeout(() => {
+        contenedor.style.opacity = 0;
+        indice++;
+        setTimeout(mostrarTexto, 1500);
+    }, 2500);
+}
+
+mostrarTexto();
+
+/* ============================================================
+   FUNCION PARA COMPROBAR PÁGINAS VISTAS (SE EJECUTA AL FINAL)
+   ============================================================ */
 function comprobarProgreso() {
     let vistas = 0;
 
@@ -61,41 +95,6 @@ function comprobarProgreso() {
         window.location.href = "final.html";
     }
 }
-
-// Comprobar progreso después de medio segundo
-setTimeout(comprobarProgreso, 500);
-
-
-/* ============================================================
-   SISTEMA DE CINEMÁTICA
-   ============================================================ */
-
-const textos = [
-    "Oh,ya recuerdo...",
-    "Meros envidiosos a mis espaldas hablaron",
-    "Por ella razon,Alfonso me desterró",
-    "Por resultado,mi ejercito territorios conquistaron",
-    "Por mis ordenes hacia el rey honraron..",
-    "Oh,ya recuerdo... ."
-];
-
-let indice = 0;
-const contenedor = document.getElementById("texto");
-
-function mostrarTexto() {
-    if (indice >= textos.length) return; // Fin de la cinemática
-
-    contenedor.innerHTML = textos[indice];
-    contenedor.style.opacity = 1;
-
-    setTimeout(() => {
-        contenedor.style.opacity = 0;
-        indice++;
-        setTimeout(mostrarTexto, 1500);
-    }, 2500);
-}
-
-mostrarTexto();
 </script>
 
 </body>
