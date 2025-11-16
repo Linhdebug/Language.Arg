@@ -39,28 +39,28 @@
 </head>
 <body>
 
-    <h1>ELIGE TU RESPUESTA</h1>
+    <h1>Recuerdame del todo...¿Que sucedio?</h1>
 
     <!--  Bloque 1  -->
     <div class="bloque">
-        <h2>Texto 1: La primera prueba te observa en silencio.</h2>
-        <input type="text" id="respuesta1" placeholder="Escribe aquí...">
+        <h2>Afrenta de .</h2>
+        <input type="text" id="Corpes" placeholder="Escribe aquí...">
         <button onclick="verificar(1)">Enviar</button>
         <div id="error1" class="error"></div>
     </div>
 
     <!--  Bloque 2  -->
     <div class="bloque">
-        <h2>Texto 2: La segunda exigirá más que memoria.</h2>
-        <input type="text" id="respuesta2" placeholder="Escribe aquí...">
+        <h2>Cantar del .</h2>
+        <input type="text" id="destierro" placeholder="Escribe aquí...">
         <button onclick="verificar(2)">Enviar</button>
         <div id="error2" class="error"></div>
     </div>
 
     <!--  Bloque 3  -->
     <div class="bloque">
-        <h2>Texto 3: La tercera… bueno, esa te juzgará.</h2>
-        <input type="text" id="respuesta3" placeholder="Escribe aquí...">
+        <h2>El cantar de las .</h2>
+        <input type="text" id="bodas" placeholder="Escribe aquí...">
         <button onclick="verificar(3)">Enviar</button>
         <div id="error3" class="error"></div>
     </div>
@@ -70,9 +70,9 @@
 function verificar(bloque) {
 
     const respuestasCorrectas = {
-        1: { palabra: "METRICA", pagina: "Metrica.html" },
-        2: { palabra: "CID", pagina: "Cid2.html" },
-        3: { palabra: "VALOR", pagina: "Valor.html" }
+        1: { palabra: "corpes", pagina: "corpes.html" },
+        2: { palabra: "destierro", pagina: "destierro.html" },
+        3: { palabra: "bodas", pagina: "bodas.html" }
     };
 
     const input = document.getElementById("respuesta" + bloque).value.trim().toUpperCase();
@@ -81,7 +81,7 @@ function verificar(bloque) {
     if (input === respuestasCorrectas[bloque].palabra) {
         window.location.href = respuestasCorrectas[bloque].pagina;
     } else {
-        error.innerHTML = "Respuesta incorrecta.";
+        error.innerHTML = "No recuerdo aquello.";
     }
 }
 </script>
