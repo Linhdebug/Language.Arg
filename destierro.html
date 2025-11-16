@@ -1,1 +1,102 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cinemática</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: black;       /* Fondo negro */
+        color: white;            /* Texto blanco */
+        font-family: "Times New Roman", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    #texto {
+        font-size: 32px;
+        opacity: 0;
+        transition: opacity 1.5s; /* Fade in/out */
+        max-width: 80%;
+        line-height: 1.5;
+    }
+</style>
+</head>
+<body>
+
+<div id="texto"></div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN DE PROGRESO — CAMBIAR ESTO SEGÚN LA PÁGINA
+   ============================================================ */
+const paginaActual = 2;  // Página 1 → poner 1, 2 → 2, 3 → 3
+
+// Guardar que esta página ha sido vista
+localStorage.setItem("visto" + paginaActual, "true");
+
+/* ============================================================
+   SISTEMA DE CINEMÁTICA
+   ============================================================ */
+const textos = [
+    "Oh, ya recuerdo...",
+    "Meros envidiosos a mis espaldas hablaron",
+    "Por ella razon, Alfonso me desterró",
+    "Por resultado, mi ejercito territorios conquistaron",
+    "Por mis ordenes hacia el rey honraron...",
+    "Oh, ya recuerdo..."
+];
+
+let indice = 0;
+const contenedor = document.getElementById("texto");
+
+function mostrarTexto() {
+    if (indice >= textos.length) {
+        // ---- CINEMÁTICA TERMINADA ----
+        comprobarProgreso();  // Ejecuta la comprobación de páginas vistas
+        return;
+    }
+
+    contenedor.innerHTML = textos[indice];
+    contenedor.style.opacity = 1;
+
+    setTimeout(() => {
+        contenedor.style.opacity = 0;
+        indice++;
+        setTimeout(mostrarTexto, 1500);
+    }, 2500);
+}
+
+mostrarTexto();
+
+/* ============================================================
+   FUNCION PARA COMPROBAR PÁGINAS VISTAS (SE EJECUTA AL FINAL)
+   ============================================================ */
+function comprobarProgreso() {
+    let vistas = 0;
+
+    if (localStorage.getItem("visto1") === "true") vistas++;
+    if (localStorage.getItem("visto2") === "true") vistas++;
+    if (localStorage.getItem("visto3") === "true") vistas++;
+
+    const faltan = 3 - vistas;
+
+    if (faltan > 0) {
+        alert("Te faltan " + faltan + " página(s) por ver.");
+    }
+
+    // Si ya viste las 3 y ESTA es la tercera → enviar a final.html
+    if (vistas === 3 && paginaActual === 3) {
+        window.location.href = "final.html";
+    }
+}
+</script>
+
+</body>
+</html>
